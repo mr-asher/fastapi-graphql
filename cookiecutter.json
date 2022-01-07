@@ -33,12 +33,8 @@
 
     "docker_image_backend": "{{cookiecutter.docker_image_prefix}}backend",
     "docker_image_celeryworker": "{{cookiecutter.docker_image_prefix}}celeryworker",
-    "docker_image_frontend": "{{cookiecutter.docker_image_prefix}}frontend",
 
     "_copy_without_render": [
-        "frontend/src/**/*.html",
-        "frontend/src/**/*.vue",
-        "frontend/node_modules/*",
         "backend/app/app/email-templates/**"
     ]
 }

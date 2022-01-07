@@ -72,7 +72,7 @@ $ bash ./scripts/test.sh
 
 Set up a local directory with links to the files for live development with the source files.
 
-This script generates a project `dev-link` *inside* the project generator, just to generate the `.env` and `./frontend/.env` files.
+This script generates a project `dev-link` *inside* the project generator, just to generate the `.env` files.
 
 Then it removes everything except those 2 files.
 

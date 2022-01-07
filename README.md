@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/tiangolo/full-stack-fastapi-postgresql.svg?branch=master)](https://travis-ci.com/tiangolo/full-stack-fastapi-postgresql)
 
-Generate a backend and frontend stack using Python, including interactive API documentation.
+Generate a backend using Python, including interactive API documentation.
 
 ### Interactive API documentation
 
@@ -43,27 +43,10 @@ Generate a backend and frontend stack using Python, including interactive API do
 * **Celery** worker that can import and use models and code from the rest of the backend selectively.
 * REST backend tests based on **Pytest**, integrated with Docker, so you can test the full API interaction, independent on the database. As it runs in Docker, it can build a new data store from scratch each time (so you can use ElasticSearch, MongoDB, CouchDB, or whatever you want, and just test that the API works).
 * Easy Python integration with **Jupyter Kernels** for remote or in-Docker development with extensions like Atom Hydrogen or Visual Studio Code Jupyter.
-* **Vue** frontend:
-    * Generated with Vue CLI.
-    * **JWT Authentication** handling.
-    * Login view.
-    * After login, main dashboard view.
-    * Main dashboard with user creation and edition.
-    * Self user edition.
-    * **Vuex**.
-    * **Vue-router**.
-    * **Vuetify** for beautiful material design components.
-    * **TypeScript**.
-    * Docker server based on **Nginx** (configured to play nicely with Vue-router).
-    * Docker multi-stage building, so you don't need to save or commit compiled code.
-    * Frontend tests ran at build time (can be disabled too).
-    * Made as modular as possible, so it works out of the box, but you can re-generate with Vue CLI or create it as you need, and re-use what you want.
-    * It's also easy to remove it if you have an API-only app, check the instructions in the generated `README.md`.
 * **PGAdmin** for PostgreSQL database, you can modify it to use PHPMyAdmin and MySQL easily.
 * **Flower** for Celery jobs monitoring.
-* Load balancing between frontend and backend with **Traefik**, so you can have both under the same domain, separated by path, but served by different containers.
 * Traefik integration, including Let's Encrypt **HTTPS** certificates automatic generation.
-* GitLab **CI** (continuous integration), including frontend and backend testing.
+* GitLab **CI** (continuous integration).
 
 ## How to use it
 
@@ -125,7 +108,6 @@ The input variables, with their default values (some auto generated) are:
 * `docker_image_prefix`: Prefix to use for Docker image names. If you are using GitLab Docker registry it would be based on your code repository. E.g.: `git.example.com/development-team/my-awesome-project/`.
 * `docker_image_backend`: Docker image name for the backend. By default, it will be based on your Docker image prefix, e.g.: `git.example.com/development-team/my-awesome-project/backend`. And depending on your environment, a different tag will be appended ( `prod`, `stag`, `branch` ). So, the final image names used will be like: `git.example.com/development-team/my-awesome-project/backend:prod`.
 * `docker_image_celeryworker`: Docker image for the celery worker. By default, based on your Docker image prefix.
-* `docker_image_frontend`: Docker image for the frontend. By default, based on your Docker image prefix.
 
 ## How to deploy
 
