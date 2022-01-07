@@ -13,6 +13,7 @@ rm -rf dev-link
 
 cookiecutter --no-input -f ./ project_name="Dev Link"
 
+mkdir ./tmp-dev-link/
 mv ./dev-link/.env ./tmp-dev-link/
 
 rm -rf ./dev-link/
