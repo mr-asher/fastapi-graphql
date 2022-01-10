@@ -1,6 +1,4 @@
-# Full Stack FastAPI and PostgreSQL - Base Project Generator
-
-[![Build Status](https://travis-ci.com/tiangolo/full-stack-fastapi-postgresql.svg?branch=master)](https://travis-ci.com/tiangolo/full-stack-fastapi-postgresql)
+# FastAPI Server with GraphQL and PostgreSQL - Base Project Generator
 
 Generate a backend using Python, including interactive API documentation.
 
@@ -11,10 +9,6 @@ Generate a backend using Python, including interactive API documentation.
 ### Alternative API documentation
 
 [![API docs](img/redoc.png)](https://github.com/tiangolo/full-stack-fastapi-postgresql)
-
-### Dashboard Login
-
-[![API docs](img/login.png)](https://github.com/tiangolo/full-stack-fastapi-postgresql)
 
 ### Dashboard - Create User
 
