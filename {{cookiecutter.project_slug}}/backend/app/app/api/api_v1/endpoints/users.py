@@ -13,7 +13,7 @@ from app.utils import send_new_account_email
 router = APIRouter()
 
 
-@router.get("/", response_model=List[ database_schema.User])
+@router.get("/", response_model=List[ database_schemas.User])
 def read_users(
     db: Session = Depends(deps.get_db),
     skip: int = 0,
