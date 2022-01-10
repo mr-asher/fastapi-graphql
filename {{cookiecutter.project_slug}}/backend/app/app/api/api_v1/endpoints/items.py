@@ -3,13 +3,13 @@ from typing import Any, List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app import crud, models, schemas
+from app import crud, models, database_schemas
 from app.api import deps
 
 router = APIRouter()
 
 
-@router.get("/", response_model=List[schemas.Item])
+@router.get("/", response_model=List[database_schemas.Item])
 def read_items(
     db: Session = Depends(deps.get_db),
     skip: int = 0,
@@ -28,11 +28,11 @@ def read_items(
     return items
 
 
-@router.post("/", response_model=schemas.Item)
+@router.post("/", response_model=database_schemas.Item)
 def create_item(
     *,
     db: Session = Depends(deps.get_db),
-    item_in: schemas.ItemCreate,
+    item_in: database_schemas.ItemCreate,
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
@@ -42,12 +42,12 @@ def create_item(
     return item
 
 
-@router.put("/{id}", response_model=schemas.Item)
+@router.put("/{id}", response_model=database_schemas.Item)
 def update_item(
     *,
     db: Session = Depends(deps.get_db),
     id: int,
-    item_in: schemas.ItemUpdate,
+    item_in: database_schemas.ItemUpdate,
     current_user: models.User = Depends(deps.get_current_active_user),
 ) -> Any:
     """
@@ -62,7 +62,7 @@ def update_item(
     return item
 
 
-@router.get("/{id}", response_model=schemas.Item)
+@router.get("/{id}", response_model=database_schemas.Item)
 def read_item(
     *,
     db: Session = Depends(deps.get_db),
@@ -80,7 +80,7 @@ def read_item(
     return item
 
 
-@router.delete("/{id}", response_model=schemas.Item)
+@router.delete("/{id}", response_model=database_schemas.Item)
 def delete_item(
     *,
     db: Session = Depends(deps.get_db),
