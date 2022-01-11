@@ -25,3 +25,9 @@ def get_superuser_token_headers(client: TestClient) -> Dict[str, str]:
     a_token = tokens["access_token"]
     headers = {"Authorization": f"Bearer {a_token}"}
     return headers
+
+
+def execute_query(client: TestClient, query: str) -> Dict:
+    r = client.post("/graphql", json= {"query": query})
+    return r.json()
+
