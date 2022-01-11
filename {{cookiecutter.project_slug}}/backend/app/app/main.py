@@ -1,4 +1,4 @@
-from ariadne import QueryType, make_executable_schema
+from ariadne import QueryType, make_executable_schema, load_schema_from_path, ObjectType
 from ariadne.asgi import GraphQL
 
 from fastapi import FastAPI
@@ -7,19 +7,16 @@ from starlette.middleware.cors import CORSMiddleware
 from app.api.api_v1.api import api_router
 from app.core.config import settings
 
-type_defs = """
-    type Query {
-        hello: String!
-    }
-"""
+
+type_definitions = load_schema_from_path("/app/app/graphql-schemas/")
 
 query = QueryType()
 
-@query.field("hello")
-def resolve_hello(*_):
-    return "Hello Graphql!"
+@query.field("healthCheck")
+def resolve_health_check(*_):
+    return { "ok": True }
 
-schema = make_executable_schema(type_defs, query)
+schema = make_executable_schema(type_definitions, query)
 
 app = FastAPI(
     title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
