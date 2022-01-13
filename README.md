@@ -1,4 +1,5 @@
 # FastAPI Server with GraphQL and PostgreSQL - Base Project Generator
+<img src="https://gitlab.com/mr-asher/fastapi-graphql/badges/master/pipeline.svg"/>
 
 Generate a backend using Python, including interactive API documentation.
 
