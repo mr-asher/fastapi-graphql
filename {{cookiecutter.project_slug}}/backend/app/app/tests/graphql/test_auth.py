@@ -3,10 +3,16 @@ from fastapi.testclient import TestClient
 
 from app.core.config import settings
 
+
 def test_token_auth(client: TestClient) -> None:
     mutation = f"""
         mutation {{
-            tokenAuth(username: "{settings.FIRST_SUPERUSER}", password: "{settings.FIRST_SUPERUSER_PASSWORD}") {{
+            tokenAuth(
+                input: {{ 
+                    username: "{settings.FIRST_SUPERUSER}", 
+                    password: "{settings.FIRST_SUPERUSER_PASSWORD}" 
+                }}
+            ) {{
                 token
             }}
         }}
@@ -14,4 +20,3 @@ def test_token_auth(client: TestClient) -> None:
     data = execute_query(client, mutation)
     assert "errors" not in data
     assert data["data"]["tokenAuth"]["token"]
-

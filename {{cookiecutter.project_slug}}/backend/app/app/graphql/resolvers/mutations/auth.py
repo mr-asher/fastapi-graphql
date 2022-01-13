@@ -15,7 +15,7 @@ from app.core import security
 mutation = MutationType()
 
 @mutation.field("tokenAuth")
-async def resolve_token_auth(obj, info, username, password):
+async def resolve_token_auth(obj, info, input):
     db = SessionLocal()
     user = crud.user.authenticate(db, email=username, password=password)
 

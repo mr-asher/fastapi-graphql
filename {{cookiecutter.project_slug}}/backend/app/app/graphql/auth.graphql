@@ -1,5 +1,10 @@
 type Mutation {
-  tokenAuth(username: String!, password: String!): TokenAuthObject!
+  tokenAuth(input: TokenAuthInput!): TokenAuthObject!
+}
+
+input TokenAuthInput {
+  username: String!
+  password: String!
 }
 
 type TokenAuthObject {
