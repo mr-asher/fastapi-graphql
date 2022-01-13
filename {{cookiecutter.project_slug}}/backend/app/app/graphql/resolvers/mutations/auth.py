@@ -17,7 +17,7 @@ mutation = MutationType()
 @mutation.field("tokenAuth")
 async def resolve_token_auth(obj, info, input):
     db = SessionLocal()
-    user = crud.user.authenticate(db, email=username, password=password)
+    user = crud.user.authenticate(db, email=input["username"], password=input["password"])
 
     if not user:
         raise HTTPException(status_code=400, detail="Incorrect email or password")
