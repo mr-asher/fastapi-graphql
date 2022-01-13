@@ -1,0 +1,7 @@
+type Mutation {
+  tokenAuth(username: String!, password: String!): TokenAuthObject!
+}
+
+type TokenAuthObject {
+  token: String
+}
