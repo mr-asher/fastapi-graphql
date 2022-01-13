@@ -12,7 +12,6 @@ def test_token_auth(client: TestClient) -> None:
         }}
     """
     data = execute_query(client, mutation)
-    print(data)
     assert "errors" not in data
     assert data["data"]["tokenAuth"]["token"]
 
