@@ -13,6 +13,8 @@ from app.core.config import settings
 from app.graphql.schema import schema
 from app.api import deps
 
+GraphQLContext = Dict[str, Any]
+
 app = FastAPI(
     title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
@@ -27,15 +29,15 @@ if settings.BACKEND_CORS_ORIGINS:
         allow_headers=["*"],
     )
 
+# Add REST API routes. 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
 
 # Setup Graphql Connection
 
-# Manage context for graphql. Provide access to database and request from resolvers.
+# Manage context for graphql and provide access to database and request from resolvers.
 # This allows access to the database session via dependencies just like normal API routes. 
 # Use info.context["request"]["state"]["db"]
-GraphQLContext = Dict[str, Any]
-
 async def get_graphql_context(request: Request, db: Session) -> GraphQLContext:
     return {"request": request, "db": db}
 
