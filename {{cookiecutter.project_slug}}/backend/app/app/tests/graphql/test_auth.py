@@ -1,3 +1,4 @@
+from typing import Dict
 from app.tests.utils.utils import execute_query
 from fastapi.testclient import TestClient
 
@@ -20,3 +21,15 @@ def test_token_auth(client: TestClient) -> None:
     data = execute_query(client, mutation)
     assert "errors" not in data
     assert data["data"]["tokenAuth"]["token"]
+
+def test_use_access_token(client: TestClient, superuser_token_headers: Dict[str, str]) -> None:
+    query = """
+        query {
+            checkAuthToken {
+                ok
+            }
+        }
+    """
+    data = execute_query(client, query, headers=superuser_token_headers)
+    assert "errors" not in data
+    assert data["data"]["checkAuthToken"]

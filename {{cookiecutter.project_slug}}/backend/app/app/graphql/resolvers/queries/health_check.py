@@ -5,3 +5,9 @@ query = QueryType()
 @query.field("healthCheck")
 def resolve_health_check(*_):
     return { "ok": True }
+
+
+@query.field("checkAuthToken")
+def resolve_check_auth_token(obj, info):
+    return { "ok": False }
+
