@@ -5,7 +5,7 @@ from ariadne.exceptions import HttpBadRequestError
 from graphql import default_field_resolver
 from app.core.config import settings
 from app.core import security
-from app.api.deps import get_current_user
+
 
 class PermissionsDirective(SchemaDirectiveVisitor):
 
@@ -25,9 +25,7 @@ class PermissionsDirective(SchemaDirectiveVisitor):
                 token, settings.SECRET_KEY, algorithms=[security.ALGORITHM]
             )
 
-            if self.args.get("scopes"):
-                scopes = self.args.get("scopes")
-                # authorized = auth.scoped(scopes, info.context)
+            print(payload)
 
             if authorized:
                 return await original_resolver(obj, info, **kwargs)

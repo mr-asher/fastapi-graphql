@@ -1,4 +1,4 @@
-directive @needsPermission(permission: String!) on FIELD_DEFINITION
+directive @needsPermission(permission: String) on FIELD_DEFINITION
 
 type Query {
   healthCheck: Healthcheck 
