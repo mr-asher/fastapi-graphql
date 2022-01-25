@@ -8,6 +8,6 @@ def resolve_health_check(*_):
 
 
 @query.field("checkAuthToken")
-def resolve_check_auth_token(obj, info):
-    return { "ok": False }
+def resolve_check_auth_token(*_):
+    return { "ok": True }
 
