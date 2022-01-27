@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from app import crud
 from app.core.config import settings
 from app.models.user import User
-from app.database_schemas.user import UserCreate, UserUpdate
+from app.database.schemas.user import UserCreate, UserUpdate
 from app.tests.utils.utils import random_email, random_lower_string
 
 

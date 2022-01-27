@@ -5,7 +5,8 @@ from fastapi.encoders import jsonable_encoder
 from pydantic.networks import EmailStr
 from sqlalchemy.orm import Session
 
-from app import crud, models, database_schemas 
+from app import crud, models
+from app.database import schemas as database_schemas
 from app.api import deps
 from app.core.config import settings
 from app.utils import send_new_account_email

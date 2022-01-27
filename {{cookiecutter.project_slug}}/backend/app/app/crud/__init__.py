@@ -5,6 +5,6 @@ from .crud_user import user
 
 # from .base import CRUDBase
 # from app.models.item import Item
-# from app.database_database_schemas.item import ItemCreate, ItemUpdate
+# from app.database.schemas.item import ItemCreate, ItemUpdate
 
 # item = CRUDBase[Item, ItemCreate, ItemUpdate](Item)
