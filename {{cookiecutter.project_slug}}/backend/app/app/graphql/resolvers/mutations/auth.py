@@ -5,7 +5,7 @@ from fastapi import HTTPException
 
 from app import crud
 from app.core.config import settings
-from app.graphql.utils import get_context_db
+from app.graphql.utils import get_context_db, get_authorize
 
 from app.core import security
 
@@ -21,11 +21,5 @@ async def resolve_token_auth(obj, info, input):
     elif not crud.user.is_active(user):
         raise HTTPException(status_code=400, detail="Inactive user")
 
-    access_token_expires = datetime.timedelta(
-        minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
-    )
-
-    token = security.create_access_token(
-        user.id, expires_delta=access_token_expires
-    )
+    token = get_authorize(info).create_access_token(subject=user.id)
     return {"token": token}

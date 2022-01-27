@@ -1,6 +1,7 @@
 from typing import Any, Dict
 from ariadne.asgi import GraphQL
 
+from fastapi_jwt_auth import AuthJWT
 from fastapi import FastAPI, Depends
 from starlette.requests import Request
 from starlette.middleware.cors import CORSMiddleware
@@ -18,6 +19,7 @@ GraphQLContext = Dict[str, Any]
 app = FastAPI(
     title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
+
 
 # Set all CORS enabled origins
 if settings.BACKEND_CORS_ORIGINS:
@@ -54,8 +56,9 @@ async def graphiql(request: Request):
     return await graphql.render_playground(request=request)
 
 @app.post("/graphql")
-async def graphql_post(request: Request, db: Session = Depends(deps.get_db)):
+async def graphql_post(request: Request, db: Session = Depends(deps.get_db), authorize: AuthJWT = Depends()):
     request.state.db = db
+    request.state.authorize = authorize
     return await graphql.graphql_http_server(request=request)
 
 app.add_websocket_route("/graphql", GraphQL(schema, debug=True)) 
