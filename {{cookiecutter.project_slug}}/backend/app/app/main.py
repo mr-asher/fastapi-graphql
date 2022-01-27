@@ -1,8 +1,10 @@
 from typing import Any, Dict
 from ariadne.asgi import GraphQL
 
-from fastapi_jwt_auth import AuthJWT
-from fastapi import FastAPI, Depends
+from fastapi_jwt_auth import AuthJWT 
+from fastapi_jwt_auth.exceptions import AuthJWTException
+from fastapi import FastAPI, Depends 
+from fastapi.responses import JSONResponse
 from starlette.requests import Request
 from starlette.middleware.cors import CORSMiddleware
 from starlette.datastructures import URL
@@ -34,6 +36,14 @@ if settings.BACKEND_CORS_ORIGINS:
 # Add REST API routes. 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
+# exception handler for authjwt
+# in production, you can tweak performance using orjson response
+@app.exception_handler(AuthJWTException)
+def authjwt_exception_handler(request: Request, exc: AuthJWTException):
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.message}
+    )
 
 # Setup Graphql Connection
 
