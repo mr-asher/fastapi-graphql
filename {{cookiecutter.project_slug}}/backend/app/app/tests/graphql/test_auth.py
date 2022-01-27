@@ -33,3 +33,15 @@ def test_use_access_token(client: TestClient, superuser_token_headers: Dict[str,
     data = execute_query(client, query, headers=superuser_token_headers)
     assert "errors" not in data
     assert data["data"]["checkAuthToken"]
+
+def test_use_access_token_without_token(client: TestClient) -> None:
+    query = """
+        query {
+            checkAuthToken {
+                ok
+            }
+        }
+    """
+    data = execute_query(client, query)
+    assert "errors" in data
+    assert not data["data"]["checkAuthToken"]
