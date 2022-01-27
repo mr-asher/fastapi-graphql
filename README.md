@@ -5,13 +5,17 @@ Generate a backend using Python, including interactive API documentation.
 
 Based on the excellent work of tiangolo: [Full Stack FastAPI and PostgreSQL - Base Project Generator](https://github.com/tiangolo/full-stack-fastapi-postgresql)
 
+### Interactive Graphql Playground
+
+[![Graphql Playground](img/graphql_playground.png)]
+
 ### Interactive API documentation
 
-[![API docs](img/docs.png)](https://github.com/tiangolo/full-stack-fastapi-postgresql)
+[![API docs](img/docs.png)]
 
 ### Alternative API documentation
 
-[![API docs](img/redoc.png)](https://github.com/tiangolo/full-stack-fastapi-postgresql)
+[![API docs](img/redoc.png)]
 
 ## Features
 
@@ -27,6 +31,7 @@ Based on the excellent work of tiangolo: [Full Stack FastAPI and PostgreSQL - Ba
     * **Robust**: Get production-ready code. With automatic interactive documentation.
     * **Standards-based**: Based on (and fully compatible with) the open standards for APIs: <a href="https://github.com/OAI/OpenAPI-Specification" class="external-link" target="_blank">OpenAPI</a> and <a href="http://json-schema.org/" class="external-link" target="_blank">JSON Schema</a>.
     * <a href="https://fastapi.tiangolo.com/features/" class="external-link" target="_blank">**Many other features**</a> including automatic validation, serialization, interactive documentation, authentication with OAuth2 JWT tokens, etc.
+* **Ariadne** Schema first graphql with JWT Authentication and FastApi Dependcies configured.
 * **Secure password** hashing by default.
 * **JWT token** authentication.
 * **SQLAlchemy** models (independent of Flask extensions, so they can be used with Celery workers directly).
