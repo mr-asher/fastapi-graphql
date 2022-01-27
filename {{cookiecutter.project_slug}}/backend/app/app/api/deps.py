@@ -5,7 +5,7 @@ from fastapi_jwt_auth import AuthJWT
 from sqlalchemy.orm import Session
 
 from app import crud, models 
-from app.db.session import SessionLocal
+from app.database.session import SessionLocal
 
 def get_db() -> Generator:
     try:
