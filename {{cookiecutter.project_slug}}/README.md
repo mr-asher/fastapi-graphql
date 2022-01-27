@@ -217,7 +217,7 @@ root@73e0ec1f1ae6:/app# $JUPYTER
         http://(73e0ec1f1ae6 or 127.0.0.1):8888/?token=f20939a41524d021fbfc62b31be8ea4dd9232913476f4397
 ```
 
-you can copy that URL and modify the "host" to be `localhost` or the domain you are using for development (e.g. `local.dockertoolbox.tiangolo.com`), in the case above, it would be, e.g.:
+you can copy that URL and modify the "host" to be `localhost` or the domain you are using for development (e.g. `local.dockertoolbox.test.com`), in the case above, it would be, e.g.:
 
 ```
 http://localhost:8888/token=f20939a41524d021fbfc62b31be8ea4dd9232913476f4397
@@ -275,13 +275,13 @@ If you are using **Docker Toolbox** in Windows or macOS instead of **Docker for 
 
 The address of your Docker Toolbox virtual machine would probably be `192.168.99.100` (that is the default).
 
-As this is a common case, the domain `local.dockertoolbox.tiangolo.com` points to that (private) IP, just to help with development (actually `dockertoolbox.tiangolo.com` and all its subdomains point to that IP). That way, you can start the stack in Docker Toolbox, and use that domain for development. You will be able to open that URL in Chrome and it will communicate with your local Docker Toolbox directly as if it was a cloud server, including CORS (Cross Origin Resource Sharing).
+As this is a common case, the domain `local.dockertoolbox.test.com` points to that (private) IP, just to help with development (actually `dockertoolbox.test.com` and all its subdomains point to that IP). That way, you can start the stack in Docker Toolbox, and use that domain for development. You will be able to open that URL in Chrome and it will communicate with your local Docker Toolbox directly as if it was a cloud server, including CORS (Cross Origin Resource Sharing).
 
-If you used the default CORS enabled domains while generating the project, `local.dockertoolbox.tiangolo.com` was configured to be allowed. If you didn't, you will need to add it to the list in the variable `BACKEND_CORS_ORIGINS` in the `.env` file.
+If you used the default CORS enabled domains while generating the project, `local.dockertoolbox.test.com` was configured to be allowed. If you didn't, you will need to add it to the list in the variable `BACKEND_CORS_ORIGINS` in the `.env` file.
 
-To configure it in your stack, follow the section **Change the development "domain"** below, using the domain `local.dockertoolbox.tiangolo.com`.
+To configure it in your stack, follow the section **Change the development "domain"** below, using the domain `local.dockertoolbox.test.com`.
 
-After performing those steps you should be able to open: http://local.dockertoolbox.tiangolo.com and it will be server by your stack in your Docker Toolbox virtual machine.
+After performing those steps you should be able to open: http://local.dockertoolbox.test.com and it will be server by your stack in your Docker Toolbox virtual machine.
 
 Check all the corresponding available URLs in the section at the end.
 
@@ -289,13 +289,13 @@ Check all the corresponding available URLs in the section at the end.
 
 You might want to use something different than `localhost` as the domain. For example, if you are having problems with cookies that need a subdomain, and Chrome is not allowing you to use `localhost`.
 
-In that case, you have two options: you could use the instructions to modify your system `hosts` file with the instructions below in **Development with a custom IP** or you can just use `localhost.tiangolo.com`, it is set up to point to `localhost` (to the IP `127.0.0.1`) and all its subdomains too. And as it is an actual domain, the browsers will store the cookies you set during development, etc.
+In that case, you have two options: you could use the instructions to modify your system `hosts` file with the instructions below in **Development with a custom IP** or you can just use `localhost.test.com`, it is set up to point to `localhost` (to the IP `127.0.0.1`) and all its subdomains too. And as it is an actual domain, the browsers will store the cookies you set during development, etc.
 
-If you used the default CORS enabled domains while generating the project, `localhost.tiangolo.com` was configured to be allowed. If you didn't, you will need to add it to the list in the variable `BACKEND_CORS_ORIGINS` in the `.env` file.
+If you used the default CORS enabled domains while generating the project, `localhost.test.com` was configured to be allowed. If you didn't, you will need to add it to the list in the variable `BACKEND_CORS_ORIGINS` in the `.env` file.
 
-To configure it in your stack, follow the section **Change the development "domain"** below, using the domain `localhost.tiangolo.com`.
+To configure it in your stack, follow the section **Change the development "domain"** below, using the domain `localhost.test.com`.
 
-After performing those steps you should be able to open: http://localhost.tiangolo.com and it will be server by your stack in `localhost`.
+After performing those steps you should be able to open: http://localhost.test.com and it will be server by your stack in `localhost`.
 
 Check all the corresponding available URLs in the section at the end.
 
@@ -332,7 +332,7 @@ Check all the corresponding available URLs in the section at the end.
 
 ### Change the development "domain"
 
-If you need to use your local stack with a different domain than `localhost`, you need to make sure the domain you use points to the IP where your stack is set up. See the different ways to achieve that in the sections above (i.e. using Docker Toolbox with `local.dockertoolbox.tiangolo.com`, using `localhost.tiangolo.com` or using `dev.{{cookiecutter.domain_main}}`).
+If you need to use your local stack with a different domain than `localhost`, you need to make sure the domain you use points to the IP where your stack is set up. See the different ways to achieve that in the sections above (i.e. using Docker Toolbox with `local.dockertoolbox.test.com`, using `localhost.test.com` or using `dev.{{cookiecutter.domain_main}}`).
 
 To simplify your Docker Compose setup, for example, so that the API docs (Swagger UI) knows where is your API, you should let it know you are using that domain for development. You will need to edit 1 line in 2 files.
 
@@ -345,7 +345,7 @@ DOMAIN=localhost
 * Change it to the domain you are going to use, e.g.:
 
 ```
-DOMAIN=localhost.tiangolo.com
+DOMAIN=localhost.test.com
 ```
 
 That variable will be used by the Docker Compose files.
@@ -682,19 +682,19 @@ Traefik UI: http://localhost:8090
 
 Development URLs, for local development.
 
-Frontend: http://local.dockertoolbox.tiangolo.com
+Frontend: http://local.dockertoolbox.test.com
 
-Backend: http://local.dockertoolbox.tiangolo.com/api/
+Backend: http://local.dockertoolbox.test.com/api/
 
-Automatic Interactive Docs (Swagger UI): https://local.dockertoolbox.tiangolo.com/docs
+Automatic Interactive Docs (Swagger UI): https://local.dockertoolbox.test.com/docs
 
-Automatic Alternative Docs (ReDoc): https://local.dockertoolbox.tiangolo.com/redoc
+Automatic Alternative Docs (ReDoc): https://local.dockertoolbox.test.com/redoc
 
-PGAdmin: http://local.dockertoolbox.tiangolo.com:5050
+PGAdmin: http://local.dockertoolbox.test.com:5050
 
-Flower: http://local.dockertoolbox.tiangolo.com:5555
+Flower: http://local.dockertoolbox.test.com:5555
 
-Traefik UI: http://local.dockertoolbox.tiangolo.com:8090
+Traefik UI: http://local.dockertoolbox.test.com:8090
 
 ### Development with a custom IP URLs
 
@@ -718,34 +718,34 @@ Traefik UI: http://dev.{{cookiecutter.domain_main}}:8090
 
 Development URLs, for local development.
 
-Frontend: http://localhost.tiangolo.com
+Frontend: http://localhost.test.com
 
-Backend: http://localhost.tiangolo.com/api/
+Backend: http://localhost.test.com/api/
 
-Automatic Interactive Docs (Swagger UI): https://localhost.tiangolo.com/docs
+Automatic Interactive Docs (Swagger UI): https://localhost.test.com/docs
 
-Automatic Alternative Docs (ReDoc): https://localhost.tiangolo.com/redoc
+Automatic Alternative Docs (ReDoc): https://localhost.test.com/redoc
 
-PGAdmin: http://localhost.tiangolo.com:5050
+PGAdmin: http://localhost.test.com:5050
 
-Flower: http://localhost.tiangolo.com:5555
+Flower: http://localhost.test.com:5555
 
-Traefik UI: http://localhost.tiangolo.com:8090
+Traefik UI: http://localhost.test.com:8090
 
 ## Project generation and updating, or re-generating
 
-This project was generated using https://github.com/tiangolo/full-stack-fastapi-postgresql with:
+This project was generated using https://github.com/mr-asher/fastapi-graphql with:
 
 ```bash
 pip install cookiecutter
-cookiecutter https://github.com/tiangolo/full-stack-fastapi-postgresql
+cookiecutter https://github.com/mr-asher/fastapi-graphql
 ```
 
 You can check the variables used during generation in the file `cookiecutter-config-file.yml`.
 
 You can generate the project again with the same configurations used the first time.
 
-That would be useful if, for example, the project generator (`tiangolo/full-stack-fastapi-postgresql`) was updated and you wanted to integrate or review the changes.
+That would be useful if, for example, the project generator (`mr-asher/fastapi-graphql`) was updated and you wanted to integrate or review the changes.
 
 You could generate a new project with the same configurations as this one in a parallel directory. And compare the differences between the two, without having to overwrite your current code but being able to use the same variables used for your current project.
 
@@ -756,7 +756,7 @@ You can use that file while generating a new project to reuse all those variable
 For example, run:
 
 ```console
-$ cookiecutter --config-file ./cookiecutter-config-file.yml --output-dir ../project-copy https://github.com/tiangolo/full-stack-fastapi-postgresql
+$ cookiecutter --config-file ./cookiecutter-config-file.yml --output-dir ../project-copy https://github.com/mr-asher/fastapi-graphql 
 ```
 
 That will use the file `cookiecutter-config-file.yml` in the current directory (in this project) to generate a new project inside a sibling directory `project-copy`.
