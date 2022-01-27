@@ -6,8 +6,8 @@ from fastapi.security import OAuth2PasswordRequestForm
 from fastapi_jwt_auth import AuthJWT
 from sqlalchemy.orm import Session
 
-from app import crud, models 
-from app.database import schemas as database_schemas
+from app import crud 
+from app.database import schemas as database_schemas, models
 from app.api import deps
 from app.core import security
 from app.core.config import settings
