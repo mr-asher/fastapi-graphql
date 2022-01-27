@@ -28,7 +28,7 @@ WORKDIR /app
 
 ENV PYTHONPATH=/app
 
-COPY ./app/worker-start.sh /worker-start.sh
+COPY ./app/scripts/worker-start.sh /worker-start.sh
 
 RUN chmod +x /worker-start.sh
 

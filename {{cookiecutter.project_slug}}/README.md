@@ -151,7 +151,7 @@ The `./backend/app` directory is mounted as a "host volume" inside the docker co
 You can rerun the test on live code:
 
 ```Bash
-docker-compose exec backend /app/tests-start.sh
+docker-compose exec backend /app/scripts/tests-start.sh
 ```
 
 #### Test running stack
@@ -159,15 +159,15 @@ docker-compose exec backend /app/tests-start.sh
 If your stack is already up and you just want to run the tests, you can use:
 
 ```bash
-docker-compose exec backend /app/tests-start.sh
+docker-compose exec backend /app/scripts/tests-start.sh
 ```
 
-That `/app/tests-start.sh` script just calls `pytest` after making sure that the rest of the stack is running. If you need to pass extra arguments to `pytest`, you can pass them to that command and they will be forwarded.
+That `/app/scripts/tests-start.sh` script just calls `pytest` after making sure that the rest of the stack is running. If you need to pass extra arguments to `pytest`, you can pass them to that command and they will be forwarded.
 
 For example, to stop on first error:
 
 ```bash
-docker-compose exec backend bash /app/tests-start.sh -x
+docker-compose exec backend bash /app/scripts/tests-start.sh -x
 ```
 
 #### Test Coverage
@@ -183,7 +183,7 @@ DOMAIN=backend sh ./scripts/test-local.sh --cov-report=html
 To run the tests in a running stack with coverage HTML reports:
 
 ```bash
-docker-compose exec backend bash /app/tests-start.sh --cov-report=html
+docker-compose exec backend bash /app/scripts/tests-start.sh --cov-report=html
 ```
 
 ### Live development with Python Jupyter Notebooks
