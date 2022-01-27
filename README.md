@@ -1,4 +1,4 @@
-# FastAPI Server with GraphQL and PostgreSQL - Base Project Generator
+# FastAPI and Ariadne Graphql - Base Project Generator
 <img src="https://gitlab.com/mr-asher/fastapi-graphql/badges/master/pipeline.svg"/>
 
 Generate a backend using Python, including interactive API documentation.
@@ -7,15 +7,15 @@ Based on the excellent work of tiangolo: [Full Stack FastAPI and PostgreSQL - Ba
 
 ### Interactive Graphql Playground
 
-[![Graphql Playground](img/graphql_playground.png)]
+![Graphql Playground](img/graphql_playground.png)
 
 ### Interactive API documentation
 
-[![API docs](img/docs.png)]
+![API docs](img/docs.png)
 
 ### Alternative API documentation
 
-[![API docs](img/redoc.png)]
+![API docs](img/redoc.png)
 
 ## Features
 
