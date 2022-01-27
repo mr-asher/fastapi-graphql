@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from app import crud
+from app.database import crud
 from app.database.schemas.item import ItemCreate, ItemUpdate
 from app.tests.utils.user import create_random_user
 from app.tests.utils.utils import random_lower_string

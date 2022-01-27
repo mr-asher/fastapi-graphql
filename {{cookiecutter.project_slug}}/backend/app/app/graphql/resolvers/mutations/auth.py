@@ -3,7 +3,7 @@ import datetime
 from ariadne import MutationType
 from fastapi import HTTPException
 
-from app import crud
+from app.database import crud
 from app.core.config import settings
 from app.graphql.utils import get_context_db, get_authorize
 

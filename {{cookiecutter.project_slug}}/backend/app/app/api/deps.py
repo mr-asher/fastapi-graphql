@@ -4,8 +4,7 @@ from fastapi import Depends, HTTPException
 from fastapi_jwt_auth import AuthJWT
 from sqlalchemy.orm import Session
 
-from app import crud 
-from app.database import models
+from app.database import models, crud
 from app.database.session import SessionLocal
 
 def get_db() -> Generator:
