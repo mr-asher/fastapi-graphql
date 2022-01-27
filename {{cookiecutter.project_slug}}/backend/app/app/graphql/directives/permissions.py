@@ -4,44 +4,37 @@ from fastapi import HTTPException, status
 
 from ariadne.schema_visitor import SchemaDirectiveVisitor
 from graphql import default_field_resolver
+from app import crud, models, database_schemas 
 from app.core.config import settings
 from app.core import security
+from app.graphql.utils import get_context_db
 
 
-class PermissionsDirective(SchemaDirectiveVisitor):
+class LoginRequiredDirective(SchemaDirectiveVisitor):
 
     def visit_field_definition(self, field, object_type):
         original_resolver = field.resolve or default_field_resolver
 
         async def resolve_scope(obj, info, **kwargs):
 
-            headers = info.context["request"]["headers"]
+            db = get_context_db(info)
 
-            authorization_header = [
-                header for header in headers if b"authorization" in header
-            ]
-
-            if not authorization_header:
-                raise HTTPException(
-                    status_code=status.HTTP_403_FORBIDDEN,
-                    detail="No authorization token"
-                )
-
-            _, _, token = authorization_header[0][1].decode("utf-8").partition(" ")
-
-            authorized = True
+            token = security.get_token_from_auth_header(info.context["request"])
 
             try:
                 payload = jwt.decode(
                     token, settings.SECRET_KEY, algorithms=[security.ALGORITHM]
                 )
-            except (jwt.JWTError, ValueError):
+                token_data = database_schemas.TokenPayload(**payload)
+            except (jwt.JWTError, jwt.JWTExpiredError, ValueError):
                 raise HTTPException(
                     status_code=status.HTTP_403_FORBIDDEN,
                     detail="Could not validate credentials",
                 )
 
-            if authorized:
+            user = crud.user.get(db, id=token_data.sub)
+            
+            if user and user.is_active: 
                 return original_resolver(obj, info, **kwargs)
 
             raise HTTPException(
@@ -52,4 +45,6 @@ class PermissionsDirective(SchemaDirectiveVisitor):
         field.resolve = resolve_scope
 
         return field
+
+
 

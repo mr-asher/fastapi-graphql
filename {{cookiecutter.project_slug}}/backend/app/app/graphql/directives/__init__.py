@@ -1,5 +1,5 @@
-from .permissions import PermissionsDirective
+from .permissions import LoginRequiredDirective 
 
 directives = {
-    "needsPermission": PermissionsDirective
+    "loginRequired": LoginRequiredDirective
 }

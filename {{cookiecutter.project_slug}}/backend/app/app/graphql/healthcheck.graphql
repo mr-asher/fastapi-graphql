@@ -1,8 +1,6 @@
-directive @needsPermission on FIELD_DEFINITION
-
 type Query {
   healthCheck: Healthcheck 
-  checkAuthToken: CheckAuthToken
+  checkAuthToken: CheckAuthToken @loginRequired
 }
 
 type Healthcheck {
@@ -10,5 +8,5 @@ type Healthcheck {
 }
 
 type CheckAuthToken {
-  ok: Boolean! @needsPermission 
+  ok: Boolean! 
 }

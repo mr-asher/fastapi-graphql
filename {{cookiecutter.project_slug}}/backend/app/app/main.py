@@ -53,7 +53,6 @@ async def graphiql(request: Request):
     request._url = URL("/graphql")
     return await graphql.render_playground(request=request)
 
-
 @app.post("/graphql")
 async def graphql_post(request: Request, db: Session = Depends(deps.get_db)):
     request.state.db = db
